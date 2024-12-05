@@ -37,4 +37,13 @@ router.get("/", async (req, res) => {
   }
 });
 
+// This is my show route
+router.get("/:id", async (req, res) => {
+  try {
+    const foundLearner = await Learner.findById(req.params.id);
+    res.status(200).json(foundLearner);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
 export default router;
